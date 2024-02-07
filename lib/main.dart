@@ -19,16 +19,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
             backgroundColor: Colors.blue, foregroundColor: Colors.white),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.blue),
               foregroundColor: MaterialStateProperty.all(Colors.white),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),),),
-          textStyle: MaterialStateProperty.all(TextStyle(fontWeight: FontWeight.w500,fontSize: 18))
-          ),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              textStyle: MaterialStateProperty.all(
+                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 18))),
         ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
@@ -40,11 +43,11 @@ class MyApp extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapShot) {
           if (snapShot.hasData) {
-            return HomePage();
+            return const HomePage();
           } else if (snapShot.connectionState == ConnectionState.waiting) {
-            return Text("Connection Lost");
+            return const Text("Connection Lost");
           } else {
-            return LoginSignUpPage();
+            return const LoginSignUpPage();
           }
         },
       ),
